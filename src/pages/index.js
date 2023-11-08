@@ -1,118 +1,219 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import CategoryHeading from "@/components/Elements/CategoryHeading";
+import CategorySubHeading from "@/components/Elements/CategorySubHeading";
+import Tag from "@/components/Elements/Tag";
+import Layout from "@/components/Layout";
+import MainCategories from "@/components/MainCategories";
+import {
+  alsubjects,
+  categoryArray,
+  olsubjects,
+  scholarShipYears,
+  syllabuses,
+  teachersGuide,
+  textBooks,
+} from "@/utils/data/data";
+import Image from "next/image";
 
 export default function Home() {
+  const blog = {
+    tags: ["the quick brown fox"],
+  };
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <Layout>
+      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        {/* main category section */}
+        <section className="grid grid-rows-2 w-full">
+          <div className="grid grid-cols-4">
+            <Tag
+              link={`/papers/category?examType=${categoryArray[2]}`}
+              name={categoryArray[2]}
+              className={"md:p-6 my-auto col-span-4"}
             />
-          </a>
-        </div>
-      </div>
+            {/* <Tag
+              link={`/papers/category?examType=${categoryArray[3]}`}
+              name={categoryArray[3]}
+              className={"md:p-6 my-auto"}
+            />
+            <Tag
+              link={`/papers/category?examType=${categoryArray[4]}`}
+              name={categoryArray[4]}
+              className={"md:p-6 my-auto"}
+            />
+            <Tag
+              link={`/papers/category?examType=${categoryArray[5]}`}
+              name={categoryArray[5]}
+              className={"md:p-6 my-auto"}
+            /> */}
+          </div>
+          <div className="grid grid-cols-2">
+            <Tag
+              link={`/papers/category?examType=${categoryArray[0]}`}
+              name={categoryArray[0]}
+              className={"md:p-6 my-auto"}
+            />
+            <Tag
+              link={`/papers/category?examType=${categoryArray[1]}`}
+              name={categoryArray[1]}
+              className={"md:p-6 my-auto"}
+            />
+          </div>
+        </section>
+        {/* main category section */}
+        {/* AL - OL Section */}
+        <section className="grid grid-cols-2 gap-8 w-full my-2">
+          <div>
+            <h2 className="mb-1">
+              <CategoryHeading name="A/L" />
+            </h2>
+            <div className="rounded-lg capitalize font-semibold border-2 border-solid border-yellow-300">
+              {/* <h3 className="bg-gray-200 pl-2 hover:bg-yellow-300 transition-all ease-in cursor-pointer rounded-md">
+              <CategorySubHeading name="Biology" />
+            </h3> */}
+              <div className="grid grid-cols-3">
+                <div className="col-span-1">
+                  <h3 className="text-lg bg-yellow-300 text-center">Stream</h3>
+                </div>
+                <div className="col-span-2">
+                  <h3 className="text-lg bg-yellow-300 text-center">Subject</h3>
+                </div>
+              </div>
+              <div className="grid grid-cols-3">
+                {alsubjects.map((item, index) => {
+                  return (
+                    <>
+                      <div className="col-span-1">
+                        <h3>{Object.keys(item)[0]}</h3>
+                      </div>
+                      <div className="col-span-2">
+                        {item[Object.keys(item)[0]].map((data, index) => {
+                          return (
+                            <CategorySubHeading
+                              link={`/papers/slk?subject=${data}&examType=A/L Exam`}
+                              name={data}
+                            />
+                          );
+                        })}
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+              {/* <div>
+              <h3 className="text-lg bg-yellow-300 text-center">Stream</h3>
+              <div className="text-center text-lg">
+                <h3>Biology</h3>
+              </div>
+            </div> */}
+              {/* <div className="col-span-2">
+              <h3 className="text-lg bg-yellow-300 text-center">Subject</h3>
+              <div>
+                <CategorySubHeading name="Chemistry" />
+                <CategorySubHeading name="Biology" />
+                <CategorySubHeading name="Chemistry" />
+              </div>
+            </div> */}
+            </div>
+          </div>
+          <div>
+            <h2 className="mb-1">
+              <CategoryHeading name="O/L" />
+            </h2>
+            <div className="rounded-lg capitalize font-semibold border-2 border-solid border-yellow-300">
+              {/* <h3 className="bg-gray-200 pl-2 hover:bg-yellow-300 transition-all ease-in cursor-pointer rounded-md">
+              <CategorySubHeading name="Biology" />
+            </h3> */}
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+              <h3 className="text-lg bg-yellow-300 text-center">Subject</h3>
+              <div className=" text-lg ">
+                {olsubjects.map((item, index) => {
+                  return (
+                    <CategorySubHeading
+                      name={item}
+                      link={`/papers/slk?subject=${item}&examType=O/L Exam`}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* AL - OL Section */}
+        {/* Teachers Guide - Syllabus Section */}
+        {/* <section className="grid grid-cols-2 gap-8 w-full my-2">
+          <div>
+            <h2 className="mb-1">
+              <CategoryHeading name="Teacher's Guides" />
+            </h2>
+            <div className="rounded-lg capitalize font-semibold border-2 border-solid border-yellow-300">
+     
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+              <h3 className="text-lg bg-yellow-300 text-center">Subject</h3>
+              <div className=" text-lg ">
+                {teachersGuide.map((item, index) => {
+                  return <CategorySubHeading name={item} />;
+                })}
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="mb-1">
+              <CategoryHeading name="Syllabuses" />
+            </h2>
+            <div className="rounded-lg capitalize font-semibold border-2 border-solid border-yellow-300">
+     
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+              <h3 className="text-lg bg-yellow-300 text-center">Subject</h3>
+              <div className=" text-lg ">
+                {syllabuses.map((item, index) => {
+                  return <CategorySubHeading name={item} />;
+                })}
+              </div>
+            </div>
+          </div>
+        </section> */}
+        {/* Teachers Guide - Syllabus Section  */}
+        {/* Text Books - Scholarship Papers Section */}
+        <section className="grid grid-cols-2 gap-8 w-full my-2">
+          {/* <div>
+            <h2 className="mb-1">
+              <CategoryHeading name="Text Books" />
+            </h2>
+            <div className="rounded-lg capitalize font-semibold border-2 border-solid border-yellow-300">
+     
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+              <h3 className="text-lg bg-yellow-300 text-center">Subject</h3>
+              <div className=" text-lg ">
+                {textBooks.map((item, index) => {
+                  return <CategorySubHeading name={item} />;
+                })}
+              </div>
+            </div>
+          </div> */}
+          <div>
+            <h2 className="mb-1">
+              <CategoryHeading name="Scholarship Papers" />
+            </h2>
+            <div className="rounded-lg capitalize font-semibold border-2 border-solid border-yellow-300">
+              {/* <h3 className="bg-gray-200 pl-2 hover:bg-yellow-300 transition-all ease-in cursor-pointer rounded-md">
+              <CategorySubHeading name="Biology" />
+            </h3> */}
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+              <h3 className="text-lg bg-yellow-300 text-center">Subject</h3>
+              <div className=" text-lg ">
+                {scholarShipYears.map((item, index) => {
+                  return (
+                    <CategorySubHeading
+                      name={item.year}
+                      link={`/papers/scholarship?year=${item.year}&examType=Grade 5 Scholarship Exam`}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* Teachers Guide - Syllabus Section  */}
+      </main>
+    </Layout>
+  );
 }
