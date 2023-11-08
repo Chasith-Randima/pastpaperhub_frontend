@@ -158,10 +158,10 @@ const Category = () => {
                     {alsubjects.map((item, index) => {
                       return (
                         <>
-                          <div className="col-span-1">
+                          <div className="col-span-1" key={index}>
                             <h3>{Object.keys(item)[0]}</h3>
                           </div>
-                          <div className="col-span-2">
+                          <div className="col-span-2" key={index + 100}>
                             {item[Object.keys(item)[0]].map((data, index) => {
                               return (
                                 <CategorySubHeading
@@ -207,6 +207,7 @@ const Category = () => {
                         <CategorySubHeading
                           name={item}
                           link={`/papers/slk?subject=${item}&examType=O/L Exam`}
+                          key={index}
                         />
                       );
                     })}
@@ -228,6 +229,7 @@ const Category = () => {
                         <CategorySubHeading
                           name={item.year}
                           link={`/papers/scholarship?year=${item.year}&examType=Grade 5 Scholarship Exam`}
+                          key={index}
                         />
                       );
                     })}
@@ -242,11 +244,5 @@ const Category = () => {
     </>
   );
 };
-
-async function generateMetadata({ params, searchParams }, parent) {
-  return {
-    title: "Is this working....?",
-  };
-}
 
 export default Category;

@@ -81,15 +81,16 @@ export default function Home() {
                 {alsubjects.map((item, index) => {
                   return (
                     <>
-                      <div className="col-span-1">
+                      <div className="col-span-1" key={index}>
                         <h3>{Object.keys(item)[0]}</h3>
                       </div>
-                      <div className="col-span-2">
-                        {item[Object.keys(item)[0]].map((data, index) => {
+                      <div className="col-span-2" key={index + 100}>
+                        {item[Object.keys(item)[0]].map((data, inkey) => {
                           return (
                             <CategorySubHeading
                               link={`/papers/slk?subject=${data}&examType=A/L Exam`}
                               name={data}
+                              key={inkey}
                             />
                           );
                         })}
@@ -130,6 +131,7 @@ export default function Home() {
                     <CategorySubHeading
                       name={item}
                       link={`/papers/slk?subject=${item}&examType=O/L Exam`}
+                      key={index}
                     />
                   );
                 })}
@@ -205,6 +207,7 @@ export default function Home() {
                     <CategorySubHeading
                       name={item.year}
                       link={`/papers/scholarship?year=${item.year}&examType=Grade 5 Scholarship Exam`}
+                      key={index}
                     />
                   );
                 })}
