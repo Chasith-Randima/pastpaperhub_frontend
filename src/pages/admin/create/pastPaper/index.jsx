@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getCookie } from "@/actions/auth";
 import { createPaper } from "@/actions/pastPapers";
 import Layout from "@/components/Layout";
-const pastPaper = () => {
+const PastPaper = () => {
   const [values, setValues] = useState({
     examType: "",
     medium: "",
@@ -384,4 +384,4 @@ const pastPaper = () => {
   );
 };
 
-export default pastPaper;
+export default PastPaper;

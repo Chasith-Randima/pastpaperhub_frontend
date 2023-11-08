@@ -5,7 +5,7 @@ import { getCookie } from "@/actions/auth";
 import { createDocument } from "@/actions/textBooks";
 import Layout from "@/components/Layout";
 
-const textBook = () => {
+const TextBook = () => {
   const [values, setValues] = useState({
     medium: "",
     type: "",
@@ -291,4 +291,4 @@ const textBook = () => {
   );
 };
 
-export default textBook;
+export default TextBook;

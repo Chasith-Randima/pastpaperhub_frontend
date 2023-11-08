@@ -11,43 +11,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Layout from "@/components/Layout";
 
-async function generateMetadata({ params }) {
-  return {
-    title: params.examType,
-    description: "description goes here",
-    openGraph: {
-      title: "title goes here",
-      description: "description goes here",
-      url: siteMetadata.siteUrl + params.slug,
-      siteName: siteMetadata.title,
-      locale: "en_US",
-      // type: "website",
-      type: "article",
-      publishedTime: "published time",
-      modifiedTime: "modified time",
-      authors: ["names"],
-      images: [
-        {
-          url: "https://nextjs.org/og.png",
-          width: 800,
-          height: 600,
-        },
-        {
-          url: "https://nextjs.org/og-alt.png",
-          width: 1800,
-          height: 1600,
-          alt: "My custom alt",
-        },
-      ],
-      twitter: {
-        card: "summary_large_image",
-        title: siteMetadata.title,
-        description: "description goes here",
-        images: [siteMetadata.socialBanner],
-      },
-    },
-  };
-}
+
 
 const SinglePage = () => {
   const searchParams = useSearchParams();

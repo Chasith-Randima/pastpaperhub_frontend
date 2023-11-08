@@ -7,7 +7,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
 
-const scholarshipMedium = () => {
+const ScholarshipMedium = () => {
   const searchParams = useSearchParams();
   const [paramsData, setParamsData] = useState({
     examType: searchParams.get("examType"),
@@ -105,4 +105,4 @@ const scholarshipMedium = () => {
   );
 };
 
-export default scholarshipMedium;
+export default ScholarshipMedium;
